@@ -1,0 +1,28 @@
+# example yaml file : https://github.com/etcd-io/etcd/blob/master/etcd.conf.yml.sample
+
+# Member flags
+name: 'etcd1'
+data-dir: /root/service/data/etcd_data
+listen-client-urls: https://0.0.0.0:2379
+listen-peer-urls: https://0.0.0.0:2380
+advertise-client-urls: https://192.168.31.218:2379
+
+# Clustering flags
+initial-advertise-peer-urls: https://192.168.31.218:2380
+initial-cluster: etcd1=https://192.168.31.218:2380
+initial-cluster-token: nssy-etcd-cluster
+initial-cluster-state: 'new'
+
+# Security flags
+client-transport-security:
+  client-cert-auth: true
+  trusted-ca-file: /root/service/config/tls/ca.pem
+  ca-file: /root/service/config/tls/ca.pem
+  cert-file: /root/service/config/tls/etcd.pem
+  key-file: /root/service/config/tls/etcd-key.pem
+peer-transport-security:
+  client-cert-auth: true
+  trusted-ca-file: /root/service/config/tls/ca.pem
+  ca-file: /root/service/config/tls/ca.pem
+  cert-file: /root/service/config/tls/etcd.pem
+  key-file: /root/service/config/tls/etcd-key.pem
